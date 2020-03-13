@@ -1,0 +1,5 @@
+code/esac/build/
+code/esac/dist/
+code/esac/esac.egg-info/
+datasets/
+!datasets/*.py

@@ -34,11 +34,13 @@ The [ESAC project page](https://hci.iwr.uni-heidelberg.de/vislearn/research/scen
 
 ESAC is based on PyTorch, and includes a custom C++ extension which you have to compile and install (but it's easy). The main ESAC framework is implemented in Python, including data processing and setting parameters. The C++ extension encapsulates robust pose optimization and the respective gradient calculation for efficiency reasons.
 
-ESAC requires the following python packages, and we tested it with the package version in brackets.
+ESAC requires the following python packages (Python3.6), and we tested it with the package version in brackets.
 ```
-pytorch (1.2.0)
+[pytorch](https://download.pytorch.org/whl/cu100/torch-1.2.0-cp36-cp36m-manylinux1_x86_64.whl) (1.2.0+cu10.0)
+[torchvision] (https://download.pytorch.org/whl/cu100/torchvision-0.4.0-cp36-cp36m-manylinux1_x86_64.whl) (0.4.0+cu10.0)
 opencv (3.4.2)
 scikit-image (0.15.0)
+pillow (6.2.2)
 ```
 You compile and install the C++ extension by executing:
 
@@ -46,6 +48,8 @@ You compile and install the C++ extension by executing:
 cd code/esac
 python setup.py install
 ```
+
+
 Compilation requires access to OpenCV header files and libraries. If you are using Conda, the setup script will look for the OpenCV package in the current Conda environment. Otherwise (or if that fails), you have to set the OpenCV library directory and include directory yourself by editing the setup.py file.
 
 If compilation succeeds, you can `import esac` in your python scripts. The extension provides two functions: `esac.forward(...)` and `esac.backward(...)`. Check our python scripts or the documentation in `esac.cpp` for reference how to use these functions.
